@@ -71,19 +71,8 @@
     }
 
     function Event(props) {
-        const ref = React.useRef();
 
-        const { onSize } = props;
-
-        React.useEffect(() => {
-            const width = ref.current.offsetWidth;
-            const height = ref.current.offsetHeight;
-            if (onSize) {
-                onSize({ width, height });
-            }
-        },[onSize]);
-
-        return <li ref={ref} className={'event' + (props.slim ? ' event_slim' : '')}>
+        return <li className={'event' + (props.slim ? ' event_slim' : '')}>
             <button className="event__button">
                 <span className={`event__icon event__icon_${props.icon}`} role="img" aria-label={props.iconLabel}></span>
                 <h4 className="event__title">{props.title}</h4>
@@ -212,23 +201,18 @@
         const [activeTab, setActiveTab] = React.useState(new URLSearchParams(location.search).get('tab') || 'all');
         const [hasRightScroll, setHasRightScroll] = React.useState(false);
 
+        const activeItems = TABS[activeTab]?.items ?? []
+
         const onSelectInput = event => {
             setActiveTab(event.target.value);
         };
-
-        let sizes = [];
-        const onSize = size => {
-            sizes = [...sizes, size];
-        };
+   
         React.useEffect(() => {
-            const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
-            const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
+            const sumWidth = activeItems.length * 200;
 
             const newHasRightScroll = sumWidth > ref.current.offsetWidth;
-            if (newHasRightScroll !== hasRightScroll) {
-                setHasRightScroll(newHasRightScroll);
-            }
-        }, [sizes]);
+            setHasRightScroll((currentHasRightScroll) => newHasRightScroll !== hasRightScroll ? newHasRightScroll : currentHasRightScroll);
+        }, [activeItems]);
 
         const onArrowCLick = () => {
             const scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');
@@ -355,7 +339,7 @@
                                 className={'section__tab' + (key === activeTab ? ' section__tab_active' : '')}
                                 id={`tab_${key}`}
                                 aria-controls={`panel_${key}`}
-                                onClick={() => setActiveTab(key)}
+                                onClick={() => setActiveTab(key) }
                             >
                                 {TABS[key].title}
                             </li>
@@ -366,11 +350,10 @@
                 <div className="section__panel-wrapper" ref={ref}>
                         <div key={activeTab} role="tabpanel" className={'section__panel'} aria-hidden={activeTab === activeTab ? 'false' : 'true'} id={`panel_${activeTab}`} aria-labelledby={`tab_${activeTab}`}>
                             <ul className="section__panel-list">
-                                {TABS[activeTab]?.items.map((item, index) =>
+                                {activeItems.map((item, index) =>
                                     <Event
                                         key={index}
                                         {...item}
-                                        onSize={onSize}
                                     />
                                 )}
                             </ul>
