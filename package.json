@@ -6,6 +6,7 @@
         "build": "rm index.js &&  npx babel index.jsx --out-file index.js",
         "minify": "npm run minifyJs &&  npm run minifyCss",
         "minifyJs" : "rm index.min.js &&  npx uglifyjs index.js -c -m -o index.min.js",
+        "minifyReact" : "npx uglifyjs vendors/react-with-dom.js -c -m -o vendors/react-with-dom.min.js",
         "minifyCss" : "npx uglifycss styles.css > index.min.css"
     },
     "main": "index.js",
