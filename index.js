@@ -199,14 +199,7 @@ function Main() {
     className: "hero-dashboard"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-dashboard__primary"
-  }, /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
-    srcset: "assets/bg-mobile.jpg",
-    media: "(max-width: 768px)"
-  }), /*#__PURE__*/React.createElement("img", {
-    className: "hero-dashboard__bg",
-    src: "assets/bg@2x.jpg",
-    alt: "bg"
-  })), /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement("h3", {
     className: "hero-dashboard__title"
   }, "\u041F\u0440\u0438\u0432\u0435\u0442, \u0413\u0435\u043D\u043D\u0430\u0434\u0438\u0439!"), /*#__PURE__*/React.createElement("p", {
     className: "hero-dashboard__subtitle"
