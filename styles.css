@@ -303,6 +303,8 @@ html, body {
 @media (max-width: 768px) {
     .hero-dashboard__bg {
         object-fit: cover;
+        left: -36.5%;
+        width: 1260px;
     }
 }
 
