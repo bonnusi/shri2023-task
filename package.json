@@ -1,28 +1,36 @@
 {
-    "name": "shri2023",
-    "version": "1.0.0",
-    "scripts": {
-        "start": "node app.js",
-        "build": "rm index.js &&  npx babel index.jsx --out-file index.js",
-        "minify": "npm run minifyJs &&  npm run minifyCss",
-        "minifyJs" : "rm index.min.js &&  npx uglifyjs index.js -c -m -o index.min.js",
-        "minifyReact" : "npx uglifyjs vendors/react-with-dom.js -c -m -o vendors/react-with-dom.min.js",
-        "minifyCss" : "npx uglifycss styles.css > index.min.css"
-    },
-    "main": "index.js",
-    "type": "module",
-    "devDependencies": {
-        "@babel/cli": "^7.17.0",
-        "@babel/core": "^7.17.0",
-        "@babel/preset-react": "^7.16.0"
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-react"
-        ]
-    },
-    "dependencies": {
-        "uglify-js": "^3.17.4",
-        "uglifycss": "^0.0.29"
-    }
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js",
+    "build": "webpack --mode=production --node-env=production",
+    "minifyCss": "npx uglifycss styles.css > index.min.css",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.22.8",
+    "@babel/preset-env": "^7.22.6",
+    "@babel/preset-react": "^7.16.0",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uglifycss": "^0.0.29"
+  },
+  "description": "My webpack project"
 }

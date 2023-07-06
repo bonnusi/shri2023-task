@@ -1,3 +1,6 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
 function Header() {
     let [expanded, setExpanded] = React.useState(false);
     let [toggled, setToggled] = React.useState(false);
@@ -327,7 +330,7 @@ function Main() {
     </main>;
 }
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
+const root = createRoot(document.getElementById('app'));
 root.render(
     <>
         <Header />
