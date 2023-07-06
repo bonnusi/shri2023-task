@@ -1,0 +1,27 @@
+{
+    "name": "shri2023",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node app.js",
+        "build": "npm run createIndexJs & npm run minifyJs & npm run minifyCss",
+        "createIndexJs": "npx babel index.jsx --out-file index.js",
+        "minifyJs" : "npx uglifyjs index.js -c -m -o index.min.js",
+        "minifyCss" : "npx uglifycss styles.css > index.min.css"
+    },
+    "main": "index.js",
+    "type": "module",
+    "devDependencies": {
+        "@babel/cli": "^7.17.0",
+        "@babel/core": "^7.17.0",
+        "@babel/preset-react": "^7.16.0"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-react"
+        ]
+    },
+    "dependencies": {
+        "uglify-js": "^3.17.4",
+        "uglifycss": "^0.0.29"
+    }
+}
