@@ -190,6 +190,10 @@ function Main() {
             <h2 className="section__title section__title-header section__main-title">Главное</h2>
             <div className="hero-dashboard">
                 <div className="hero-dashboard__primary">
+                    <picture>
+                        <source srcset="assets/bg-mobile.jpg" media="(max-width: 768px)" />
+                        <img className="hero-dashboard__bg" src="assets/bg@2x.jpg" alt="bg" />
+                    </picture>
                     <h3 className="hero-dashboard__title">Привет, Геннадий!</h3>
                     <p className="hero-dashboard__subtitle">Двери и окна закрыты, сигнализация включена.</p>
                     <ul className="hero-dashboard__info">

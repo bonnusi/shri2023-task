@@ -273,10 +273,8 @@ html, body {
     display: flex;
     gap: 0.9375rem;
     height: 20.6875rem;
-    background: no-repeat 50% 50% url(assets/bg@2x.jpg);
-    /*background-size: cover;*/
-    background-size: 1260px;
     border-radius: 1.25rem;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -285,7 +283,26 @@ html, body {
         gap: 1.25rem;
         height: auto;
         margin-bottom: 0.3125rem;
-        background-image: url(assets/bg-mobile.jpg);
+    }
+}
+
+.hero-dashboard__bg {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 1.25rem;
+    pointer-events: none;
+    z-index: -1;
+    object-fit: none;
+}
+
+@media (max-width: 768px) {
+    .hero-dashboard__bg {
+        object-fit: cover;
     }
 }
 
